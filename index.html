@@ -4,5 +4,43 @@
         <title>☠👻☠</title>
     </head>
     <body>☠👻☠</body>
+    <script>
+        let leftFace = '😨';
+        let rightFace = '😨';
+        let ghostPosition = 0;
+        let ghostVelocity = 1;
+        let pauseFrames = 0;
+        const WIDTH = 30;
+
+        function switchDirections() {
+            if (ghostVelocity > 0) {
+                rightFace = '😱';
+            } else {
+                leftFace = '😱';
+            }
+            ghostVelocity = -ghostVelocity;
+            pauseFrames = 5;
+        }
+
+        function makeSpaces(num) {
+            return Array(num + 1).join('_');
+        }
+
+        function update() {
+            if (pauseFrames > 0) {
+                pauseFrames--;
+                return;
+            }
+            leftFace = rightFace = '😨';
+            ghostPosition += ghostVelocity;
+            if (ghostPosition == 0 || ghostPosition == WIDTH-1) {
+                switchDirections();
+            }
+            middle = makeSpaces(ghostPosition) + '👻' + makeSpaces(WIDTH - ghostPosition);
+            hash = leftFace + middle + rightFace;
+            window.location.hash = hash;
+        }
+        setInterval(update, 30);
+    </script>
 </html>
 <!-- poor ghost. :( -->
