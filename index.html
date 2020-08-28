@@ -10,7 +10,7 @@
         let ghostPosition = 0;
         let ghostVelocity = 1;
         let pauseFrames = 0;
-        const WIDTH = 30;
+        const WIDTH = 20;
 
         function switchDirections() {
             if (ghostVelocity > 0) {
@@ -40,7 +40,7 @@
             hash = leftFace + middle + rightFace;
             window.location.hash = hash;
         }
-        setInterval(update, 30);
+        setInterval(update, 50);
     </script>
 </html>
 <!-- poor ghost. :( -->
